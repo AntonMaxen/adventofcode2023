@@ -18,7 +18,6 @@ def one():
 
 def check_win(card_id, all_cards, win_list, dive_deeper):
     card = all_cards[card_id]
-    print(card_id)
 
     winning_numbers, your_numbers = card.split("|")
     winning_numbers = {int(number.strip()) for number in winning_numbers.split()}
