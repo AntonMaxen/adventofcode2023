@@ -29,12 +29,13 @@ def two():
     time = int("".join([t.strip() for t in time.split(":")[1].split()]))
     distance = int("".join([t.strip() for t in distances.split(":")[1].split()]))
 
-    win = 0
-    for i in range(time + 1):
-        if (time - i) * i > distance:
-            win += 1
+    # win = 0
+    print(len([i for i in range(time + 1) if (time - i) * i > distance]))
+    # for i in range(time + 1):
+    #     if (time - i) * i > distance:
+    #         win += 1
 
-    print(win)
+    # print(win)
 
 
 if __name__ == "__main__":
