@@ -61,40 +61,12 @@ def one():
     with open("input.txt") as file:
         data = [line.strip() for line in file.readlines() if line.strip()]
 
-    player_hands = []
-    for player in data:
-        hand = player.split()
-        cards, bid = hand
-        cards = cards.strip()
-        player_hands.append((cards, int(bid)))
+    player_hands = [
+        (player.split()[0].strip(), int(player.split()[1].strip())) for player in data
+    ]
 
     s_hands = sorted(player_hands, key=lambda c: (check_hand(c[0]), hand_value(c[0])))
-
-    with open("res.txt", "w") as t:
-        t.write(
-            "\n".join(
-                [f"{c[0]} - {check_hand(c[0])} - {hand_value(c[0])}" for c in s_hands]
-            )
-        )
-
-    # hh = defaultdict(list)
-
-    # for cards, bid in player_hands:
-    #     hh[check_hand(cards)].append(cards)
-
-    # print(sorted(hh[0], key=lambda c: hand_value(c)))
-
-    # print(s_hands[:10])
-
-    scaled_bids = [hand[1] * rank for rank, hand in enumerate(s_hands, 1)]
-    print(sum(scaled_bids))
-    # bid = int(bid.strip())
-    # print(cards, check_hand(cards))
-
-
-def two():
-    with open("input.txt") as file:
-        data = [line.strip() for line in file.readlines() if line.strip()]
+    print(sum([hand[1] * rank for rank, hand in enumerate(s_hands, 1)]))
 
 
 if __name__ == "__main__":
